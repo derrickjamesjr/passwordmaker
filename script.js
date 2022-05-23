@@ -62,16 +62,11 @@ function generatePassword() {
 
       for (var i = 0; i <= starter + 1; i++) {
         var random = Math.floor(Math.random() * i);
-        next += bgx.slice(0 , starter);
       }
-      
-    
-
+      next += bgx.slice(0 , starter);
     }
   }
   return next;
-
-  console.log(next)
 }
 
 // Write password to the #password input
