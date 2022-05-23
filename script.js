@@ -5,7 +5,9 @@ var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var LC = "abcdefghijklmnopqrstuvwxyz";
 var NV = "0123456789";
 var SC = "!@#$%^&*~?_-\\[]{}";
-var box = [] 
+var box = []
+var b0x = []
+var next = ""
 console.log(UC.length);
 console.log(LC.length);
 console.log(NV.length);
@@ -18,7 +20,7 @@ function generatePassword() {
   var starter = window.prompt("How many characters would you like? (At least 8. At most 128.)")
   
   if (starter >= 8 && starter <= 128) {
-    psswrd2(starter);
+    psswrd2();
   }
   else {
     alert("Not a valid response. Try again.");
@@ -52,20 +54,18 @@ function generatePassword() {
     if (sYES) {
       for (var i = 0; i < SC.length; i++) {
         box.push(SC[i]);
-        psswrd3();
       }
+      console.log(box);
+
+      for (var i = box.length - 1; i > 0; i--) {
+        var x = Math.floor(Math.random() * i)
+        var b0x = box[i]
+        box[i] = box[x];
+        box[x] = b0x;
+      }
+      console.log(b0x);
     }
-    else {
-      psswrd3();
-    }
-    console.log(box)
-
-
-
-
-
   }
-
   return;
 }
 
