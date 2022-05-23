@@ -1,6 +1,5 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-  
 var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var LC = "abcdefghijklmnopqrstuvwxyz";
 var NV = "0123456789";
@@ -8,12 +7,6 @@ var SC = "!@#$%^&*~?_-\\[]{}";
 var box = []
 var b0x = []
 var next = ""
-console.log(UC.length);
-console.log(LC.length);
-console.log(NV.length);
-console.log(SC.length);
-
-
 
 function generatePassword() {
 
@@ -34,7 +27,7 @@ function generatePassword() {
       for (var i = 0; i < UC.length; i++) {
         box.push(UC[i]);
       }
-    } 
+    }
 
     var lYES =  confirm("Would you like lowercase letters?")
     if (lYES) {
@@ -55,16 +48,18 @@ function generatePassword() {
       for (var i = 0; i < SC.length; i++) {
         box.push(SC[i]);
       }
+    
       console.log(box);
-
-      for (var i = box.length - 1; i > 0; i--) {
+    
+      for (var i = box.length - 1; i > starter.length; i--) {
         var x = Math.floor(Math.random() * i)
         var b0x = box[i]
         box[i] = box[x];
         box[x] = b0x;
       }
-      console.log(b0x);
-    }
+      }
+
+      console.log(box);
   }
   return;
 }
