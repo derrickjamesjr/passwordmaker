@@ -41,27 +41,37 @@ function generatePassword() {
       for (var i = 0; i < NV.length; i++) {
         box.push(NV[i]);
       }
-    }
 
     var sYES = confirm("Would you like special characters?")
     if (sYES) {
       for (var i = 0; i < SC.length; i++) {
         box.push(SC[i]);
       }
-    
+    }
       console.log(box);
     
-      for (var i = box.length - 1; i > starter.length; i--) {
+      for (var i = box.length - 1; i > 0; i--) {
         var x = Math.floor(Math.random() * i)
         var b0x = box[i]
-        box[i] = box[x];
+        box[i] = box[x]
         box[x] = b0x;
       }
-      }
-
       console.log(box);
+
+      let bgx = box;
+
+      for (var i = 0; i <= starter + 1; i++) {
+        var random = Math.floor(Math.random() * i);
+        next += bgx.slice(0 , starter);
+      }
+      
+    
+
+    }
   }
-  return;
+  return next;
+
+  console.log(next)
 }
 
 // Write password to the #password input
