@@ -1,15 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var LC = "abcdefghijklmnopqrstuvwxyz";
-var NV = "0123456789";
-var SC = "!@#$%^&*~?_-\\[]{}";
+var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var LC = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+var NV = "012345678901234567890123456789012345678901234567890123456789";
+var SC = "!@#$%^&*~?_-\\[]{}!@#$%^&*~?_-\\[]{}!@#$%^&*~?_-\\[]{}";
 var box = []
 var b0x = []
 var next = ""
 
-function generatePassword() {
 
+function generatePassword() {
+  // create first array of choices
   var starter = window.prompt("How many characters would you like? (At least 8. At most 128.)")
   
   if (starter >= 8 && starter <= 128) {
@@ -48,6 +49,7 @@ function generatePassword() {
         box.push(SC[i]);
       }
     }
+      // takes first array, shuffles it randomly, then cuts out the section of the randomly sorted array up to the number selected in the starter prompt
       console.log(box);
     
       for (var i = box.length - 1; i > 0; i--) {
@@ -80,5 +82,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-writePassword();
