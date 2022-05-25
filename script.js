@@ -1,24 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-  
-var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var LC = "abcdefghijklmnopqrstuvwxyz";
-var NV = "0123456789";
-var SC = "!@#$%^&*~?_-\\[]{}";
-var box = [] 
-console.log(UC.length);
-console.log(LC.length);
-console.log(NV.length);
-console.log(SC.length);
-
+var UC = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var LC = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+var NV = "012345678901234567890123456789012345678901234567890123456789";
+var SC = "!@#$%^&*~?_-\\[]{}!@#$%^&*~?_-\\[]{}!@#$%^&*~?_-\\[]{}";
+var box = []
+var b0x = []
+var next = ""
 
 
 function generatePassword() {
-
+  // create first array of choices
   var starter = window.prompt("How many characters would you like? (At least 8. At most 128.)")
   
   if (starter >= 8 && starter <= 128) {
-    psswrd2(starter);
+    psswrd2();
   }
   else {
     alert("Not a valid response. Try again.");
@@ -32,7 +28,7 @@ function generatePassword() {
       for (var i = 0; i < UC.length; i++) {
         box.push(UC[i]);
       }
-    } 
+    }
 
     var lYES =  confirm("Would you like lowercase letters?")
     if (lYES) {
@@ -46,27 +42,33 @@ function generatePassword() {
       for (var i = 0; i < NV.length; i++) {
         box.push(NV[i]);
       }
-    }
 
     var sYES = confirm("Would you like special characters?")
     if (sYES) {
       for (var i = 0; i < SC.length; i++) {
         box.push(SC[i]);
-        psswrd3();
       }
     }
-    else {
-      psswrd3();
+      // takes first array, shuffles it randomly, then cuts out the section of the randomly sorted array up to the number selected in the starter prompt
+      console.log(box);
+    
+      for (var i = box.length - 1; i > 0; i--) {
+        var x = Math.floor(Math.random() * i)
+        var b0x = box[i]
+        box[i] = box[x]
+        box[x] = b0x;
+      }
+      console.log(box);
+
+      let bgx = box;
+
+      for (var i = 0; i <= starter + 1; i++) {
+        var random = Math.floor(Math.random() * i);
+      }
+      next += bgx.slice(0 , starter);
     }
-    console.log(box)
-
-
-
-
-
   }
-
-  return;
+  return next;
 }
 
 // Write password to the #password input
@@ -80,5 +82,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-writePassword();
